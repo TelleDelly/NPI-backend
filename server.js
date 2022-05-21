@@ -1,4 +1,5 @@
 const express = require('express')
+require('dotenv').config()
 const trailController = require('./controllers/trail-controller')
 const app = express()
 

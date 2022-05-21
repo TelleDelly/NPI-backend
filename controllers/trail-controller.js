@@ -34,4 +34,5 @@ trailRouter.delete('/:id', (req, res) => {
     .catch(console.error)
 })
 
+
 module.exports = trailRouter

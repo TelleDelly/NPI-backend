@@ -18,6 +18,7 @@ trailRouter.get('/:id', (req, res) => {
 
 trailRouter.put('/:id', (req, res) => {
     Trail.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    .then(res.send("Updated data"))
     .catch(console.error)
 })
 

@@ -8,9 +8,9 @@ app.use(express.urlencoded({extended: true}))
 
 app.use('/trails', trailController)
 
-const port = process.env.PORT || 4000
+app.set("port", process.env.PORT || 8000)
 
 
-app.listen(port, () => {
+app.listen(app.get("port"), () => {
     console.log(`Server is running on ${port}`)
 })

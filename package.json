@@ -29,7 +29,7 @@
     "mongoose": "^6.3.4"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   }
 >>>>>>> 4128d183b8b764a982567e1c194588c83a18ced0
 }

@@ -4,7 +4,7 @@
         "latlon":
             {
                 "lat":"10",
-                "lon":"15",
+                "lon":"15"
             },
         "addres": 
             {
@@ -12,7 +12,7 @@
                 "City":"ParkCity",
                 "State":"WA",
                 "Country":"USA",
-                "zip":"12345",
+                "zip":"12345"
             },
         "trailData":
             {
@@ -22,9 +22,9 @@
                 "accesibility":
                     {
                         "tags": ["wheechair accessible", "guiderails", "paved paths"],
-                        "isAccesible":"Accesible to most with paved paths. guiderails and wheechair access and parking",
+                        "isAccesible":"Accesible to most with paved paths. guiderails and wheechair access and parking"
                     },
-                "isMaintained":"true",
+                "isMaintained":"true"
 
             },
         "description":"A nice trail with easy access with a parking lot and parlor. A quick walking path through woods and fields",

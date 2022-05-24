@@ -39,7 +39,7 @@ const TrailSchema = new mongoose.Schema(
             Country: String,
             zip: Number,
         },
-        trailData: [TrailMetaData],
+        trailData: TrailMetaData,
         description: {
             type: String,
             required: true,

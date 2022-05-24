@@ -5,12 +5,12 @@ const parksData = require('../models/data.json')
 
 
 
-app.get('/home', (req, res) => {
+parksRouter.get('/home', (req, res) => {
     res.send(parksData)
     .then(console.log('Data is fetched on the backend'))
 })
 
-app.get('/home/activities/topics/:id', (req, res) => {
+parksRouter.get('/home/activities/topics/:id', (req, res) => {
     res.send(parksData)
     console.log('Id data has been fetched')
 })

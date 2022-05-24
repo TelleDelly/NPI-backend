@@ -1,22 +1,17 @@
-const express = require ('express')
+const express = require('express')
+const parksapiController = require('./controllers/parksapiController')
+const trailController = require('./controllers/trail-controller')
 const app = express()
-const data = require ('./model/data.json')
+
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.use('/trails', trailController)
+app.use('/parks', parksapiController)
+const port = process.env.PORT || 4000
 
 
-app.listen(4000, () => {
-    console.log("app listening on port 4000")
-  })
 
-
-app.get('/home', (req, res) => {
-    res.send(data)
-    .then(console.log('Data is fetched on the backend'))
-})
-
-app.get('/home/activities/topics/:id', (req, res) => {
-    res.send(data)
-    console.log('Id data has been fetched');
+app.listen(port, () => {
+    console.log(`Server is running on ${port}`)
 })

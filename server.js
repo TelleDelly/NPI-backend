@@ -1,14 +1,17 @@
 const express = require('express')
-require('dotenv').config()
+const cors = require('cors')
+const parksapiController = require('./controllers/parksapiController')
 const trailController = require('./controllers/trail-controller')
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use(cors())
 
 app.use('/trails', trailController)
 
-app.set("port", process.env.PORT || 8000)
+app.use('/parks', parksapiController)
+const port = process.env.PORT || 4000
 
 
 app.listen(app.get("port"), () => {

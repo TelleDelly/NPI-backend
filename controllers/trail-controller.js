@@ -32,6 +32,7 @@ trailRouter.delete('/:id', (req, res) => {
     Trail.findByIdAndRemove(req.params.id)
     .then(res.send("Deleted data"))
     .catch(console.error)
+    
 })
 
 

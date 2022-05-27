@@ -3,9 +3,31 @@ const { Router } = require('express')
 const parksRouter = express.Router()
 
 const Park = require('../models/park-model.js')
+const Trail = require('../models/trail-model.js')
 
 //Access using the prefix /parks
 
+//General search route that will access the collection by using query keywords
+/*
+access parks data using keyword phrases such as name or state
+such as
+https://endpoint.com/trails/search?name=Yosemite&state=CA
+
+Here is a list of supported queries
+fullName=
+parkCode=
+
+access nested data members with dot notation
+Ex.
+?addresses.stateCode=KY
+This will pull all parks in kentucky
+*/
+
+parksRouter.get('/search', (req, res) => {
+    Park.find(req.query)
+    .then((parks) => res.send(parks))
+    .catch(console.error)
+})
 
 parksRouter.get('/', (req, res) => {
     Park.find({})
@@ -31,12 +53,10 @@ parksRouter.post('/', (req, res) => {
     .catch(console.error)
 })
 
-oarkRouter.delete('/:id', (req, res) => {
+parksRouter.delete('/:id', (req, res) => {
     Park.findByIdAndRemove(req.params.id)
     .then(res.send("deleted data"))
     .catch(console.error)
 })
-
-module.exports = parksRouter
 
 module.exports = parksRouter

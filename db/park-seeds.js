@@ -1,5 +1,5 @@
 const Park = require('../models/park-model')
-const seedData = require('../models/parks.json')
+const seedData = require('../db/parks.json')
 
 Park.deleteMany({})
 .then(() => {

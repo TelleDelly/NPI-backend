@@ -6,6 +6,23 @@ const Trail = require('../models/trail-model.js')
 
 //Access using the prefix /trails
 
+//general search route that will access the collection by using query keywords
+/*
+access using keyword phrases such as name or state
+as such
+https://endpoint.com/trails/search?name=Hidden%20trail&state=CA
+
+Here is a list of all supported queries
+name=
+accress nested data members with dot notation
+*/
+trailRouter.get('/search', (req, res) => {
+    Trail.find(req.query)
+    .then((trails) => res.send(trails))
+    .catch(console.error)
+})
+
+
 //Get route that grabs all data from trail collection
 trailRouter.get('/', (req, res) => {
     Trail.find({})

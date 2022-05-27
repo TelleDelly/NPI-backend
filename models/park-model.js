@@ -6,7 +6,8 @@ const ParkSchema = new mongoose.Schema (
             type: String
           },
           fullName: {
-            type: String
+            type: String,
+            unique: true
           },
           parkCode: {
             type: String
@@ -49,7 +50,7 @@ const ParkSchema = new mongoose.Schema (
                     phoneNumber: String,
                     description: String,
                     extension: String,
-                    type: String
+                    form: String
                 },
               ]
             },
@@ -65,7 +66,7 @@ const ParkSchema = new mongoose.Schema (
           entranceFees: {
             type: [
                 {
-                    cost: String ,
+                    cost: Number,
                     description: String, 
                     title: String 
                 }
@@ -73,7 +74,11 @@ const ParkSchema = new mongoose.Schema (
           },
           entrancePasses: {
             type: [
-                Mixed
+                {
+                  cost: String,
+                  description: String,
+                  title: String
+                }
             ]
           },
           fees: {
@@ -87,17 +92,45 @@ const ParkSchema = new mongoose.Schema (
           },
           operatingHours: {
             type: [
-              Mixed
+              {
+                exceptions: Array,
+                description: String,
+                standardHours:
+                  {
+                    wednesday: String,
+                    monday: String,
+                    thursday: String,
+                    sunday: String,
+                    tuesday: String,
+                    friday: String,
+                    saturday: String,
+                  },
+                  name: String
+              }
             ]
           },
           addresses: {
             type: [
-              Mixed
+              {
+                postalCode: String,
+                city: String,
+                stateCode: String,
+                line1: String,
+                form: String,
+                line3: String,
+                line2: String,
+              }
             ]
           },
           images: {
             type: [
-              Mixed
+              {
+                credit: String,
+                title: String,
+                altText: String,
+                caption: String,
+                url: String
+              }
             ]
           },
           weatherInfo: {

@@ -3,7 +3,6 @@ const { Router } = require('express')
 const parksRouter = express.Router()
 
 const Park = require('../models/park-model.js')
-const Trail = require('../models/trail-model.js')
 
 //Access using the prefix /parks
 
@@ -22,15 +21,30 @@ Ex.
 ?addresses.stateCode=KY
 This will pull all parks in kentucky
 */
-
-parksRouter.get('/search', (req, res) => {
-    Park.find(req.query)
+parksRouter.get('/', (req, res) => {
+    Park.find({})
     .then((parks) => res.send(parks))
     .catch(console.error)
 })
 
-parksRouter.get('/', (req, res) => {
+parksRouter.get('/latLong', (req, res) => {
     Park.find({})
+    .then((parks) => {
+        const latLon = parks.map((park) => {
+            return{
+                id: park._id,
+                name: park.fullName,
+                location: {lat: Number(park.latitude), lng: Number(park.longitude)},
+                description: park.description,
+            }
+        })
+        res.send(latLon)
+    })
+    .catch(console.error)
+})
+
+parksRouter.get('/search', (req, res) => {
+    Park.find(req.query)
     .then((parks) => res.send(parks))
     .catch(console.error)
 })

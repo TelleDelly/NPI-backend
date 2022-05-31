@@ -4,6 +4,13 @@ const trailRouter = express.Router()
 
 const Trail = require('../models/trail-model.js')
 
+//Get route that grabs all data from trail collection
+trailRouter.get('/', (req, res) => {
+    Trail.find({})
+    .then((trails) => res.send(trails))
+    .catch(console.error)
+})
+
 //Access using the prefix /trails
 
 //general search route that will access the collection by using query keywords
@@ -16,17 +23,27 @@ Here is a list of all supported queries
 name=
 accress nested data members with dot notation
 */
+
+
 trailRouter.get('/search', (req, res) => {
     Trail.find(req.query)
     .then((trails) => res.send(trails))
     .catch(console.error)
 })
 
-
-//Get route that grabs all data from trail collection
-trailRouter.get('/', (req, res) => {
+trailRouter.get('/latLong', (req, res) => {
     Trail.find({})
-    .then((trails) => res.send(trails))
+    .then((trails) => {
+        const latLon = trails.map((trail) => {
+            return{
+                id: trail._id,
+                name: trail.name,
+                location: trail.latLon,
+                description: trail.description,
+            }
+        })
+        res.send(latLon)
+    })
     .catch(console.error)
 })
 

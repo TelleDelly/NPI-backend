@@ -2,7 +2,10 @@ const { Schema } = require('mongoose')
 const mongoose = require('../db/Connection')
 
 const CommentSchema = new mongoose.Schema({
-    parkRef: {type: Schema.Types.ObjectId, ref: 'Park'},
+    parkRef: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,

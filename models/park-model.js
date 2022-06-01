@@ -1,7 +1,9 @@
+const { Schema } = require('mongoose')
 const mongoose = require('../db/Connection')
 
 const ParkSchema = new mongoose.Schema (
     {
+          comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
           url: {
             type: String
           },

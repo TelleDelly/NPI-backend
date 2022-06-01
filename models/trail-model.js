@@ -1,3 +1,4 @@
+const { Schema } = require('mongoose')
 const mongoose = require('../db/Connection')
 
 const TrailMetaData = new mongoose.Schema(
@@ -24,6 +25,7 @@ const TrailMetaData = new mongoose.Schema(
 
 const TrailSchema = new mongoose.Schema(
     {
+        comments: [{type: Schema.Types.ObjectId, ref: "Comment"}],
         name:{
             type: String,
             required: true,

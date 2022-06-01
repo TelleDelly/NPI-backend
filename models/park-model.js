@@ -1,3 +1,4 @@
+const { Schema } = require('mongoose')
 const mongoose = require('../db/Connection')
 
 const ParkSchema = new mongoose.Schema (

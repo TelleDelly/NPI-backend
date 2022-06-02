@@ -16,7 +16,7 @@ commentRouter.put('/edit/:commentID', (req, res) => {
     .catch(console.error)
 })
 
-commentRouter.post('/add/:parksID', (req, res) => {
+commentRouter.post('/add', (req, res) => {
     Comment.create(req.body)
     .then(res.send('Added comment'))
     .catch(console.error)
